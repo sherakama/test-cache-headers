@@ -1,13 +1,22 @@
 import Image from "next/image";
 
 export const dynamicParams = false;
+export const dynamic = 'force-dynamic';
 
 export const generateStaticParams = () => {
   // Just the home page.
   return [{ slug: ['']}];
 }
 
-export default function Home() {
+export default async function Home() {
+  // Fetch data from the example API
+  const res = await fetch('https://jsonplaceholder.typicode.com/posts/1', {
+    next: {
+      revalidate: 10,
+    },
+  });
+  const data = await res.json();
+  console.log('Data:', data);
   console.log('Running Home function...');
   return (
     <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
@@ -29,7 +38,7 @@ export default function Home() {
             .
           </li>
           <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
+            Save and see your changes instantly. {data.body}
           </li>
         </ol>
 
