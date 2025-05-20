@@ -4,7 +4,7 @@ export const dynamicParams = false;
 
 export const generateStaticParams = () => {
   // Just the home page.
-  return [];
+  return [{ slug: ['']}];
 }
 
 export default function Home() {
