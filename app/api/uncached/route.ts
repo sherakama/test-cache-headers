@@ -26,7 +26,5 @@ export async function GET() {
     'x-test': new Date().toISOString(),
   });
 
-  return NextResponse.json(responseHash, {
-    headers,
-  });
+  return NextResponse.json(responseHash);
 }
