@@ -5,7 +5,7 @@ export const dynamic = 'force-dynamic';
 
 export const generateStaticParams = () => {
   // Just the home page.
-  return [{ slug: ['']}];
+  return [{ slug: [''] }];
 }
 
 export default async function Home() {
