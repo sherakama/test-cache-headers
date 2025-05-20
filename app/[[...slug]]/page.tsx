@@ -13,7 +13,7 @@ export default async function Home() {
   const randomNumber = Math.floor(Math.random() * 10) + 1;
   const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${randomNumber}`, {
     next: {
-      revalidate: 100,
+      revalidate: 10,
     },
   });
   const data = await res.json();
