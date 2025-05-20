@@ -1,7 +1,6 @@
 import Image from "next/image";
 
 export const dynamicParams = false;
-export const dynamic = 'force-dynamic';
 
 export const generateStaticParams = () => {
   // Just the home page.
@@ -10,9 +9,11 @@ export const generateStaticParams = () => {
 
 export default async function Home() {
   // Fetch data from the example API
-  const res = await fetch('https://jsonplaceholder.typicode.com/posts/1', {
+  // random number between 1 and 10
+  const randomNumber = Math.floor(Math.random() * 10) + 1;
+  const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${randomNumber}`, {
     next: {
-      revalidate: 10,
+      revalidate: 100,
     },
   });
   const data = await res.json();
